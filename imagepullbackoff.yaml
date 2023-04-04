@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: derivco-imagepull-backoff
+  labels:
+    app: derivco-imagepull-backoff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: derivco-imagepull-backoff
+  template:
+    metadata:
+      labels:
+        app: derivco-imagepull-backoff
+    spec:
+      containers:
+      - name: imagepull-demo
+        image: nginx:1.221.0
