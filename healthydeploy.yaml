@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Derivco-create-container-config-error
+  name: derivco-create-container-config-error
   labels:
-    app: Derivco-create-error
+    app: derivco-create-error
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: Derivco-create-error
+      app: derivco-create-error
   template:
     metadata:
       labels:
-        app: Derivco-create-error
+        app: derivco-create-error
     spec:
       containers:
       - name: crash-demo
