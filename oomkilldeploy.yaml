@@ -18,7 +18,7 @@ spec:
       - name: derivco-oom-killed
         image: polinux/stress
         command: ["/bin/sh", "-c"]
-        args: ["echo 'Going to allocate 60MB of memory!' ; echo 'Going to allocate 60MB of memory!' ; echo 'Going to allocate 60MB of memory!' ; stress --vm 2 --vm-bytes 30M --vm-hang 120 --backoff 10000000 --verbose"]
+        args: ["echo 'Allocating additional resources!' ; stress --vm 2 --vm-bytes 30M --vm-hang 120 --backoff 10000000 --verbose"]
         resources:
           requests:
             memory: "40Mi"
