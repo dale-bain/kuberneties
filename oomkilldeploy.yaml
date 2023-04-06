@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: derivco-oom-killed
+  labels:
+    app: derivco-oom-killed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: derivco-oom-killed
+  template:
+    metadata:
+      labels:
+        app: derivco-oom-killed
+    spec:
+      containers:
+      - name: derivco-oom-killed
+        image: polinux/stress
+        command: ["/bin/sh", "-c"]
+        args: ["echo 'Going to allocate 60MB of memory!' ; echo 'Going to allocate 60MB of memory!' ; echo 'Going to allocate 60MB of memory!' ; stress --vm 2 --vm-bytes 30M --vm-hang 120 --backoff 10000000 --verbose"]
+        resources:
+          requests:
+            memory: "40Mi"
+          limits:
+            memory: "40Mi"
